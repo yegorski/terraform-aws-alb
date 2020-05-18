@@ -10,6 +10,12 @@ variable "protocol" {
   default     = "HTTP"
 }
 
+variable "load_balancer_interal" {
+  type        = "string"
+  description = "Controls load balancer visibility."
+  default     = true
+}
+
 variable "name" {
   type        = "string"
   description = "Name of the project the network is being created for."

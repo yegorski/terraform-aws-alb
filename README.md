@@ -16,6 +16,7 @@ module "alb" {
   security_group_id = "${aws_security_group.alb.id}"
   subnet_ids        = "${data.aws_subnet_ids.private.ids}"
   vpc_id            = "${data.terraform_remote_state.account.vpc_id}"
+  region            = "AWS_REGION"
 
   tags = "${var.tags}"
 }

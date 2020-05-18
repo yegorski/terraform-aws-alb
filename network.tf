@@ -1,6 +1,6 @@
 resource "aws_lb" "alb" {
   name               = "${var.name}"
-  internal           = true
+  internal           = "${var.load_balancer_interal}"
   load_balancer_type = "application"
   security_groups    = ["${var.security_group_id}"]
   subnets            = ["${var.subnet_ids}"]
@@ -68,8 +68,10 @@ resource "aws_lb_target_group" "tg" {
   }
 
   health_check {
-    path    = "/"
-    matcher = "200,301,302"
+    path     = "/"
+    port     = "${var.app_port}"
+    protocol = "${var.protocol}"
+    matcher  = "200,301,302"
   }
 
   tags = "${var.tags}"
